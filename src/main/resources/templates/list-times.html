@@ -11,6 +11,9 @@
 
     <h3>Lap Times Board</h3>
     <hr>
+    <a th:href="@{/board/showFormForAdd}" class="btn btn-primary btn-sm mb-3">
+        Add Lap Time
+    </a>
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
@@ -19,21 +22,23 @@
             <th>Driver</th>
             <th>Date</th>
             <th>Notes</th>
+            <th>Action</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr th:each=" lapTime : ${times}">
+        <tr th:each=" lapTime : ${laptimes}">
 
-            <td th:text="${tempEmployee.firstName}" />
-            <td th:text="${tempEmployee.lastName}" />
-            <td th:text="${tempEmployee.email}" />
+            <td th:text="${lapTime.time}" />
+            <td class="text-nowrap" th:text="${lapTime.vehicle}"/>
+            <td class="text-nowrap" th:text="${lapTime.driver}" />
+            <td class="text-nowrap" th:text="${lapTime.date}" />
+            <td th:text="${lapTime.notes}" />
 
         </tr>
 
         </tbody>
     </table>
-
 </div>
 </body>
 </html>

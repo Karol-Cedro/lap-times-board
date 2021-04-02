@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Lap Times Board</title>
 </head>
 <body>
-$END$
+<div align="center">
+    <h3>Lap Times Board</h3>
+    <hr>
+    <p class="h4 mb-4">Save Lap Time</p>
+    <form action="#" th:action="@{/board/save}" th:object="${laptime}" method="POST">
+        <input type="hidden" th:field="*{id}"/>
+        <input type="text" th:field="*{time}" class="form-control mb-4 col-4" placeholder="Time [HH:MM:SS]">
+        <input type="text" th:field="*{vehicle}" class="form-control mb-4 col-4" placeholder="Vehicle">
+        <input type="text" th:field="*{driver}" class="form-control mb-4 col-4" placeholder="Driver">
+        <input type="text" th:field="*{date}" class="form-control mb-4 col-4" placeholder="Date [YYYY-MM-DD]">
+        <input type="text" th:field="*{notes}" class="form-control mb-4 col-4" placeholder="Notes">
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+    <hr>
+    <a th:href="@{/board/list}">Back to Lap Times Board</a>
+</div>
 </body>
 </html>
