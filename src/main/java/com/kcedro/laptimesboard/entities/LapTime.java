@@ -1,6 +1,7 @@
 package com.kcedro.laptimesboard.entities;
 
 import javax.persistence.*;
+
 import java.sql.Date;
 import java.sql.Time;
 
