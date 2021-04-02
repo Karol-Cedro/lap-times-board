@@ -5,10 +5,7 @@ import com.kcedro.laptimesboard.services.LapTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,6 +40,12 @@ public class LapTimeBoardController {
     @PostMapping("/save")
     public String saveLapTime(@ModelAttribute("laptime") LapTime lapTime){
         lapTimeService.save(lapTime);
+        return "redirect:/board/list";
+    }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("laptimeId") int id){
+        lapTimeService.deleteById(id);
         return "redirect:/board/list";
     }
 }
