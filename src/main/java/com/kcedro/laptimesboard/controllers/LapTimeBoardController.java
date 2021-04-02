@@ -37,6 +37,16 @@ public class LapTimeBoardController {
         return "laptime-form";
     }
 
+    @GetMapping("/showFormForUpdate")
+    public String showFormForUpdate(@RequestParam("laptimeId") int id,Model model){
+
+        LapTime lapTime = lapTimeService.findById(id);
+
+        model.addAttribute("laptime",lapTime);
+
+        return "laptime-form";
+    }
+
     @PostMapping("/save")
     public String saveLapTime(@ModelAttribute("laptime") LapTime lapTime){
         lapTimeService.save(lapTime);
