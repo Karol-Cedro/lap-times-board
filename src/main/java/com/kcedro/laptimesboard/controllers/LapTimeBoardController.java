@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("laptimeboard")
+@RequestMapping("/board")
 public class LapTimeBoardController {
 
     private LapTimeService lapTimeService;
@@ -28,6 +30,19 @@ public class LapTimeBoardController {
 
         model.addAttribute("laptimes",lapTimes);
 
-        return "list-lap-times";
+        return "list-times";
+    }
+
+    @GetMapping("/showFormForAdd")
+    public String showFormForAdd(Model model){
+        LapTime lapTime = new LapTime();
+        model.addAttribute("laptime",lapTime);
+        return "laptime-form";
+    }
+
+    @PostMapping("/save")
+    public String saveLapTime(@ModelAttribute("laptime") LapTime lapTime){
+        lapTimeService.save(lapTime);
+        return "redirect:/board/list";
     }
 }
