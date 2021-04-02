@@ -28,6 +28,6 @@ public class LapTimeBoardController {
 
         model.addAttribute("laptimes",lapTimes);
 
-        return "laptimesboard/laptime-list";
+        return "list-lap-times";
     }
 }
