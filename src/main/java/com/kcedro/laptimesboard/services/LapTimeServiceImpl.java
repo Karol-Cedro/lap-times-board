@@ -20,7 +20,7 @@ public class LapTimeServiceImpl implements LapTimeService {
 
     @Override
     public List<LapTime> findAll() {
-        return lapTimeRepository.findAll();
+        return lapTimeRepository.findAllByOrderByTimeAsc();
     }
 
     @Override
