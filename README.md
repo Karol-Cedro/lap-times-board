@@ -1,2 +1,0 @@
-# lap-times-board
-gfgfg
